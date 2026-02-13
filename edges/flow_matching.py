@@ -271,6 +271,10 @@ def match_operator(value: str, target: str, operator: str) -> bool:
             return value[0].startswith(target)
     elif operator == "contains":
         return target in value
+    elif operator == "not contains": # In order to get “Generic CF + overridden CF for specific consumers” 
+         if isinstance(target, (list, tuple)): 
+             return all(t not in value for t in target) 
+         return target not in value 
     return False
 
 
