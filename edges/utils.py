@@ -84,7 +84,7 @@ def check_presence_of_required_fields(data: list):
         assert "matrix" in cf["supplier"], f"Missing matrix fields in {cf['supplier']}."
         assert "matrix" in cf["consumer"], f"Missing matrix fields in {cf['consumer']}."
         assert any(
-            x.get("operator", "equals") in ["equals", "contains", "startswith"]
+            x.get("operator", "equals") in ["equals", "contains", "startswith", "excludes"]
             for x in [cf["supplier"], cf["consumer"]]
         ), f"Invalid operator in {cf}."
 

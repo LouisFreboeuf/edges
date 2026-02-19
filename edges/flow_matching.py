@@ -271,7 +271,9 @@ def match_operator(value: str, target: str, operator: str) -> bool:
             return value[0].startswith(target)
     elif operator == "contains":
         return target in value
-    elif operator == "not_contains": 
+    elif operator == "excludes":
+        if not isinstance(value, str):
+            return False
         if isinstance(target, (list, tuple)):
             return all(t not in value for t in target)
         return target not in value
